@@ -3,6 +3,7 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
 
 class VMFPluginExtension {
+    // vmf version
     String version  = "0.1"
 }
 
