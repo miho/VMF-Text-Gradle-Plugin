@@ -1,12 +1,6 @@
-package eu.mihosoft.vmf.gradle.plugin;
-
-import org.gradle.api.Plugin;
-import org.gradle.api.Project;
-import org.gradle.api.tasks.compile.JavaCompile;
-
-import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+import org.gradle.api.tasks.compile.JavaCompile
 
 class VMFPluginExtension {
     String version  = "0.1"
@@ -72,7 +66,7 @@ class VMFPlugin implements Plugin<Project> {
                 // load VMF class (depending on version)
                 def vmfClassPath = []
                 project.sourceSets.vmf.compileClasspath.each { entry ->
-                        vmfClassPath.add(entry.toURI().toURL())
+                    vmfClassPath.add(entry.toURI().toURL())
                 }
 
                 def classLoader = new URLClassLoader(vmfClassPath as URL[])
@@ -82,21 +76,21 @@ class VMFPlugin implements Plugin<Project> {
                 project.sourceSets.vmf.java.each {
                     vmfCodeFile ->
 
-                            String path = vmfCodeFile.absolutePath
+                        String path = vmfCodeFile.absolutePath
 
-                    if(project.project.sourceSets.vmf.java.srcDirs.size()>1) {
-                        throw new IllegalArgumentException("VMF does not support more than one vmf source folder.")
-                    } else if(project.project.sourceSets.vmf.java.srcDirs.isEmpty()) {
-                        throw new IllegalArgumentException("VMF does not work without a vmf source folder.")
-                    }
+                        if(project.project.sourceSets.vmf.java.srcDirs.size()>1) {
+                            throw new IllegalArgumentException("VMF does not support more than one vmf source folder.")
+                        } else if(project.project.sourceSets.vmf.java.srcDirs.isEmpty()) {
+                            throw new IllegalArgumentException("VMF does not work without a vmf source folder.")
+                        }
 
-                    // we remove the leading part of the string including project location + leading '/'
-                    path = path.substring(project.sourceSets.vmf.java.srcDirs[0].absolutePath.size()+1)
+                        // we remove the leading part of the string including project location + leading '/'
+                        path = path.substring(project.sourceSets.vmf.java.srcDirs[0].absolutePath.size()+1)
 
-                    // now we remove the java file name
-                    path = path.substring(0,path.lastIndexOf("/"))
+                        // now we remove the java file name
+                        path = path.substring(0,path.lastIndexOf("/"))
 
-                    vmfModelPaths.add(path)
+                        vmfModelPaths.add(path)
                 }
 
                 // generate code for all model paths
@@ -107,8 +101,8 @@ class VMFPlugin implements Plugin<Project> {
                     // generate code
                     vmfClass.generate(new File("$project.buildDir/vmf-src-gen"),
                             new URLClassLoader(urls as URL[],
-                    vmfClass.getClassLoader()),
-                    vmfModelPath
+                                    vmfClass.getClassLoader()),
+                            vmfModelPath
                     )
                 }
 
@@ -117,10 +111,10 @@ class VMFPlugin implements Plugin<Project> {
         }
 
         // clean the generated code
-        project.task('vmfClean', group: 'vmf', description: 'Cleanses generates Java code.') {
+        project.task('vmfClean', group: 'vmf', description: 'Cleans generates Java code.') {
             doLast {
-                new File("$project.buildDir/vmf-src-gen/").listFiles().each {
-                    f -> f.delete()
+                new File("${project.buildDir}/vmf-src-gen/").listFiles().each {
+                    f -> f.deleteDir()
                 }
             }
         }
@@ -132,9 +126,9 @@ class VMFPlugin implements Plugin<Project> {
         // before we compile we need to run the vmf code generator
         project.tasks.withType(JavaCompile) {
             compileTask ->
-            if(!compileTask.name.startsWith("compileVmf")) {
-                compileTask.dependsOn('vmfGenModelSources')
-            }
+                if(!compileTask.name.startsWith("compileVmf")) {
+                    compileTask.dependsOn('vmfGenModelSources')
+                }
         }
     }
 }
