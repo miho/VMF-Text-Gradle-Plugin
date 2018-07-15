@@ -1,6 +1,6 @@
 # VMF-Gradle-Plugin
 
-Get this plugin https://plugins.gradle.org/plugin/eu.mihosoft.vmf
+Get this plugin from here: https://plugins.gradle.org/plugin/eu.mihosoft.vmf
 
 Just add the plugin id to use this plugin:
 
