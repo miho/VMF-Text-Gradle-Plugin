@@ -2,3 +2,4 @@
 /build
 VMF-Gradle-Plugin.iml
 /.gradle
+/out/
