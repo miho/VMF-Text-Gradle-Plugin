@@ -96,6 +96,9 @@ class VMFPlugin implements Plugin<Project> {
                         vmfModelPaths.add(path)
                 }
 
+                // only process each package once
+                vmfModelPaths = vmfModelPaths.unique()
+
                 // generate code for all model paths
                 for(String vmfModelPath : vmfModelPaths) {
 
