@@ -1,4 +1,4 @@
-# VMF-Gradle-Plugin
+# VMF-Text-Gradle-Plugin
 
 Get this plugin from here: https://plugins.gradle.org/plugin/eu.mihosoft.vmftext
 
