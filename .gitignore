@@ -3,3 +3,8 @@
 VMF-Gradle-Plugin.iml
 /.gradle
 /out/
+/bin/
+/.project
+/.classpath
+/.settings
+/.vscode

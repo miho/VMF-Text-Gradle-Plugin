@@ -381,15 +381,15 @@ class CompileVMFTextTask extends DefaultTask {
                     packageName = packageName.substring(0,packageName.length()-file.getName().length());
                 }
 
-                if(packageName.startsWith("/")) {
+                if(packageName.startsWith(File.separator)) {
                     packageName = packageName.substring(1,packageName.length());
                 }
 
-                if(packageName.endsWith("/")) {
+                if(packageName.endsWith(File.separator)) {
                     packageName = packageName.substring(0,packageName.length()-1);
                 }
 
-                packageName = packageName.replace('/','.');
+                packageName = packageName.replace(File.separator,'.');
 
                 return packageName;
             }
