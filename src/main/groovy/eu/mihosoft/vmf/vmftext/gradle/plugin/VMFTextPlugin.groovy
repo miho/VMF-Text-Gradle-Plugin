@@ -84,7 +84,6 @@ interface VMFTextSourceVirtualDirectory {
 class VMFTextPluginExtension {
     // vmf-text version
     String vmfVersion     = "0.1"
-    String version = "0.1.1"
     String antlrVersion   = "4.7.1"
 }
 
@@ -145,18 +144,17 @@ class VMFTextPlugin implements Plugin<Project> {
             jcenter()
         }
 
-        project.configurations(
-                {
-                    vmfText {
-                        description = "VMF-Text Dependencies"
-                        transitive = true
-                    }
-                }
-        )
+//        project.configurations(
+//                {
+//                    vmfText {
+//                        description = "VMF-Text Dependencies"
+//                        transitive = true
+//                    }
+//                }
+//        )
 
         project.dependencies {
-            vmfText    group: 'eu.mihosoft.vmf', name: 'vmf-text',          version: extension.version
-            vmfText    group: 'eu.mihosoft.vmf', name: 'vmf',               version: extension.vmfVersion
+            //vmfText    group: 'eu.mihosoft.vmf', name: 'vmf-text',          version: extension.version
             compile    group: 'eu.mihosoft.vmf', name: 'vmf-runtime',       version: extension.vmfVersion
             compile    group: 'org.antlr',       name: 'antlr4-runtime',    version: extension.antlrVersion
         }
@@ -168,10 +166,10 @@ class VMFTextPlugin implements Plugin<Project> {
         }
 
         def classLoader = new URLClassLoader(vmfTextClassPath as URL[])
-        def vmfTextClass = classLoader.loadClass("eu.mihosoft.vmf.vmftext.VMFText")
+        def vmfTextClass = eu.mihosoft.vmf.vmftext.VMFText.class;//.loadClass("eu.mihosoft.vmf.vmftext.VMFText")
         // we need to set this classloader because otherwise vmf-text won't find the correct
         // vmf core classes
-        vmfTextClass.setCompileClassLoader(classLoader);
+        //vmfTextClass.setCompileClassLoader(classLoader);
 
         project.getConvention().getPlugin(JavaPluginConvention.class).getSourceSets().all(
                 new Action<SourceSet>() {
