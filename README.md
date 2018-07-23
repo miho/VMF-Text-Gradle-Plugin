@@ -6,15 +6,15 @@ Just add the plugin id to use this plugin:
 
 ```gradle
 plugins {
-  id "eu.mihosoft.vmftext" version "0.1.0" // use latest version
+  id "eu.mihosoft.vmftext" version "0.1.2.5" // use latest version
 }
 ```
 
-and configure VMF-Text:
+and (optionally) configure VMF-Text:
 
 ```gradle
 vmfText {
-    version    = '0.1.1' // use desired VMF version
-    vmfVersion = '0.1'   //
+    vmfVersion   = '0.1'   // runtime version
+    antlrVersion = '4.7.1  // runtime version
 }
 ```
