@@ -160,12 +160,12 @@ class VMFTextPlugin implements Plugin<Project> {
         }
 
         // load VMF class (depending on version)
-        def vmfTextClassPath = []
-        project.configurations.vmfText.each { entry ->
-            vmfTextClassPath.add(entry.toURI().toURL())
-        }
-
-        def classLoader = new URLClassLoader(vmfTextClassPath as URL[])
+//        def vmfTextClassPath = []
+//        project.configurations.vmfText.each { entry ->
+//            vmfTextClassPath.add(entry.toURI().toURL())
+//        }
+//
+//        def classLoader = new URLClassLoader(vmfTextClassPath as URL[])
         def vmfTextClass = eu.mihosoft.vmf.vmftext.VMFText.class;//.loadClass("eu.mihosoft.vmf.vmftext.VMFText")
         // we need to set this classloader because otherwise vmf-text won't find the correct
         // vmf core classes
