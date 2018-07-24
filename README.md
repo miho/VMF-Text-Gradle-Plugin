@@ -6,7 +6,7 @@ Just add the plugin id to use this plugin:
 
 ```gradle
 plugins {
-  id "eu.mihosoft.vmftext" version "0.1.2.5" // use latest version
+  id "eu.mihosoft.vmftext" version "0.1.2.6" // use latest version
 }
 ```
 
