@@ -1,6 +1,6 @@
 # VMF-Text-Gradle-Plugin
 
-**The Gradle plugin are now part of the [VMF-Text](https://github.com/miho/VMF-Text) repository.**
+**From now on the Gradle plugin is part of the [VMF-Text](https://github.com/miho/VMF-Text) repository.**
 
 > Get this plugin from here: https://plugins.gradle.org/plugin/eu.mihosoft.vmftext
 >
